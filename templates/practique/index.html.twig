@@ -1,0 +1,24 @@
+
+
+
+{# {%set PI = 3.14 %}
+<h1>{{PI}}</h1> #}
+
+<table>
+    <tr>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Nacionalidad</th>
+    {% for a in auth%}
+    <tr>
+    <td>{{ a.nombre | upper}}</td>
+    <td>{{ a.apellido }}</td>
+    <td>{{ a.nacionalidad }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+

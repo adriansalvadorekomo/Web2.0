@@ -1,143 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author Details - {{ author.name }}</title>
-    <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Author Details -
+			{{ author.name }}</title>
+		<link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+				background-color: #f0f2f5;
+				color: #333;
+			}
 
-        .card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-top: 40px;
-            background-color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+			.card {
+				max-width: 900px;
+				margin: 40px auto;
+				border: none;
+				border-radius: 15px;
+				overflow: hidden;
+				background-color: #fff;
+				box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+			}
 
-        .card-header {
-            background: linear-gradient(135deg, #007bff, #6c757d);
-            border-bottom: none;
-            padding: 1.5rem;
-        }
+			.card-header {
+				background-color: #4e73df;
+				color: white;
+				padding: 1.5rem;
+				text-align: center;
+			}
 
-        .card-title {
-            font-size: 2rem;
-            font-weight: 600;
-        }
+			.card-title {
+				font-size: 1.75rem;
+				font-weight: bold;
+			}
 
-        .card-body h3 {
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
+			.author-img {
+				width: 180px;
+				height: 180px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin-bottom: 1rem;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+			}
 
-        .btn {
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-            text-decoration: none; /* Eliminar el subrayado de los enlaces */
-        }
+			.card-body {
+				padding: 2rem;
+			}
 
-        .btn-info {
-            background-color: #17a2b8;
-            border: none;
-        }
+			.card-body h3 {
+				font-size: 1.4rem;
+				font-weight: bold;
+				margin-bottom: 1rem;
+			}
 
-        .btn-warning {
-            background-color: #ffc107;
-            border: none;
-        }
+			.card-body p {
+				font-size: 1rem;
+				margin-bottom: 0.75rem;
+			}
 
-        .btn:hover {
-            opacity: 0.9;
-        }
+			.book-list {
+				margin-top: 1.5rem;
+			}
 
-        .img-fluid {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+			.book-list h4 {
+				font-size: 1.3rem;
+				font-weight: bold;
+				margin-bottom: 0.75rem;
+			}
 
-        .list-group-item {
-            border: none;
-            padding: 0.75rem 1.25rem;
-            background-color: #f8f9fa;
-            transition: background-color 0.2s ease;
-        }
+			.list-group-item {
+				display: flex;
+				justify-content: space-between;
+				padding: 0.75rem 1.5rem;
+				font-size: 1rem;
+			}
 
-        .list-group-item:hover {
-            background-color: #e2e6ea;
-        }
+			.list-group-item .badge {
+				background-color: #4e73df;
+				padding: 0.5rem 1rem;
+				font-size: 0.85rem;
+				border-radius: 15px;
+			}
 
-        .badge {
-            background-color: #007bff;
-            padding: 8px 12px;
-            font-size: 0.9rem;
-            border-radius: 20px;
-        }
+			.btn {
+				text-decoration: none;
+			}
 
-        .col-md-4 {
-            background-color: #f8f9fa;
-        }
+			.btn-group {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 1.5rem;
+			}
 
-        .d-flex {
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-    </style>
-</head>
+			.btn-custom {
+				flex: 1;
+				padding: 12px;
+				font-size: 1rem;
+				border-radius: 30px;
+				border: none;
+				margin-right: 10px;
+				transition: all 0.3s ease;
+			}
 
-<body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header text-white text-center">
-                <h2 class="card-title">{{ author.name }}</h2>
-            </div>
-            <div class="row g-0">
-                <!-- Imagen del autor -->
-                <div class="col-md-4 text-center p-5">
-                    <img src="{{ asset(author.image) }}" alt="{{ author.name }}" class="img-fluid rounded-circle mb-3">
-                </div>
+			.btn-custom:last-child {
+				margin-right: 0;
+			}
 
-                <!-- Información del autor -->
-                <div class="col-md-8 p-5">
-                    <div class="card-body">
-                        <h3 class="card-title">Author Information</h3>
-                        <p><strong>Email:</strong> {{ author.email }}</p>
-                        <p><strong>Number of Books:</strong> {{ books_count }}</p>
+			.btn-show {
+				background-color: #4e73df;
+				color: white;
+			}
 
-                        <!-- Lista de libros -->
-                        <h4 class="mt-4">Books:</h4>
-                        <ul class="list-group mb-4">
-                            {% for book in author.books %}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    {{ book }}
-                                    <span class="badge">View</span>
-                                </li>
-                            {% endfor %}
-                        </ul>
+			.btn-edit {
+				background-color: #f6c23e;
+				color: white;
+			}
 
-                        <!-- Acciones: Show List y Edit -->
-                        <div class="d-flex">
-                            <a href="{{ path('app_author_list') }}" class="btn btn-info">Show List</a>
-                            <a href="{{ path('author_edit', {'id': author.id}) }}" class="btn btn-warning">Edit</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+			.btn-custom:hover {
+				opacity: 0.9;
+			}
 
-    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-</body>
+			@media(max-width: 768px) {
+				.card-body {
+					padding: 1.5rem;
+				}
+
+				.btn-group {
+					flex-direction: column;
+				}
+
+				.btn-custom {
+					margin-bottom: 10px;
+				}
+
+				.btn-custom:last-child {
+					margin-bottom: 0;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div
+				class="card">
+				<!-- Header con el nombre del autor -->
+				<div class="card-header">
+					<h2 class="card-title">{{ author.name }}</h2>
+				</div>
+
+				<!-- Cuerpo de la tarjeta con la información del autor -->
+				<div class="card-body">
+					<div
+						class="text-center">
+						<!-- Imagen del autor -->
+						<img src="{{ asset(author.image) }}" alt="{{ author.name }}" class="author-img">
+					</div>
+
+					<!-- Información del autor -->
+					<h3>Author Information</h3>
+					<p>
+						<strong>Email:</strong>
+						{{ author.email }}</p>
+					<p>
+						<strong>Number of Books:</strong>
+						{{ books_count }}</p>
+
+					<!-- Lista de libros -->
+					<div class="book-list">
+						<h4>Books:</h4>
+						<ul class="list-group">
+							{% for book in author.books %}
+								<li class="list-group-item">
+									{{ book }}
+									<span class="badge">View</span>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+
+					<!-- Botones de acción -->
+					<div class="btn-group">
+						<a href="{{ path('app_author_list') }}" class="btn btn-custom btn-show">Show</a>
+						<a href="{{ path('author_edit', {'id': author.id}) }}" class="btn btn-custom btn-edit">Edit</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+	</body>
 
 </html>

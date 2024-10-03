@@ -150,69 +150,6 @@ public function authorDetails(int $id): Response
 }
 
 
-    // #[Route('/author/details/{id}', name: 'author_show')]
-    // public function authorShow($id): Response
-    // {
-    //     // Simulación de datos de autores para el ejemplo
-    //     $authors = [
-    //         [
-    //             'id' => 1,
-    //             'name' => 'Gabriel García Márquez',
-    //             'email' => 'gabriel@example.com',
-    //             'books' => ['Cien años de soledad', 'El amor en los tiempos del cólera'],
-    //             'image' => 'assets/images/ggm.jpeg',
-    //         ],
-    //         [
-    //             'id' => 2,
-    //             'name' => 'J.K. Rowling',
-    //             'email' => 'jk@example.com',
-    //             'books' => ['Harry Potter', 'Fantastic Beasts'],
-    //             'image' => 'assets/images/jk.jpeg',
-    //         ],
-    //         [
-    //             'id' => 3,
-    //             'name' => 'Haruki Murakami',
-    //             'email' => 'hm@example.com',
-    //             'books' => ['Tokio blues', 'Kafka en la orilla'],
-    //             'image' => 'assets/images/hm.jpeg',
-    //         ],
-    //         [
-    //             'id' => 4,
-    //             'name' => 'William Shakespeare',
-    //             'email' => 'ws@example.com',
-    //             'books' => ['Romeo y Julieta', 'Hamlet'],
-    //             'image' => 'assets/images/ws.jpeg',
-    //         ],
-    //         [
-    //             'id' => 5,
-    //             'name' => 'Taha Hussein',
-    //             'email' => 'th@example.com',
-    //             'books' => ['Al-Ayyam', 'Al-Nil'],
-    //             'image' => 'assets/images/th.jpeg',
-    //         ],
-    //         [
-    //             'id' => 6,
-    //             'name' => 'Victor Hugo',
-    //             'email' => 'vh@example.com',
-    //             'books' => ['Les Misérables', 'Notre-Dame de Paris'],
-    //         ]
-    //     ];
-
-    //     // Obtén el autor por su ID
-    //     $author = $authors[$id] ?? null;
-
-    //     // Verifica si el autor existe
-    //     if (!$author) {
-    //         throw $this->createNotFoundException('El autor no fue encontrado.');
-    //     }
-
-    //     // Retorna la plantilla con los detalles del autor
-    //     return $this->render('author/details.html.twig', [
-    //         'author' => $author,
-    //         'books_count' => count($author['books']),
-    //     ]);
-    // }
-
     // Acción para editar los detalles del autor
     #[Route('/author/edit/{id}', name: 'author_edit')]
     public function authorEdit($id): Response

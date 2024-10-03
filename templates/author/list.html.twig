@@ -29,7 +29,8 @@
                         <td>{{ author.books[0] | capitalize }}</td>
                         <td><img src="{{ asset(author.image) }}" alt="{{ author.name }}"class="rounded" style="width: 100px; height: auto;"></td>
                         <td>
-                            <a href="{{ path('author_show', {'id': author.id}) }}" class="btn btn-info">Details</a>
+                            <a href="{{ path('author_details', {'id': author.id}) }}" class="btn btn-info">Details</a>
+
                             <a href="{{ path('author_edit', {'id': author.id}) }}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
